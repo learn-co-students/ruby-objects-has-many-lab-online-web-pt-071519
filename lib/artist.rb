@@ -5,10 +5,10 @@ class Artist
 
   def initialize(name)
     @name = name
-    @@all = self
+    @@all << self
   end
 
-  def self.all?
+  def self.all
     @@all
   end
 
@@ -16,7 +16,7 @@ class Artist
     song.artist = self
   end
 
-  def add_song_by_name(song_name)
+  def add_song_by_name(name)
     song = Song.new(name)
     song.artist = self
   end
@@ -25,8 +25,7 @@ class Artist
     Song.all.select {|song| song.artist == self}
   end
 
-  def Artist.song_count
+  def self.song_count
     Song.all.count
   end
-
 end
