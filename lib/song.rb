@@ -1,31 +1,21 @@
 require 'pry'
 
-class Artist
+class Song
 
-  attr_accessor :name, :songs
+  attr_accessor :name, :artist
 
-  @@song_count = 0
+  @@all = []
 
   def initialize(name)
     @name = name
-    @songs = []
+    @@all << self
   end
 
-  def add_song(song)
-    @songs << song
-    song.artist = self
-    @@song_count += 1
+  def self.all
+    @@all
   end
 
-  def add_song_by_name(name)
-    song = Song.new(name)
-    @songs << song
-    song.artist = self
-    @@song_count += 1
+  def artist_name
+    artist.name if artist
   end
-
-  def self.song_count
-    @@song_count
-  end
-
 end
